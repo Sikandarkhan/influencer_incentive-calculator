@@ -6,30 +6,38 @@
 <body>
 	<h1>Incentive Calculator</h1>
 	<form>
-		<label for="followers">Number of Followers:</label>
-		<input type="number" id="followers" name="followers"><br><br>
+		
+      <label for="range-slider">Select a value:</label>
+<input type="range" id="range-slider" name="range-slider" min="0" max="100" step="1" onchange="updateValue(this.value);">
+<p>Selected value: <span id="slider-value">50</span></p>
+
+<script>
+  function updateValue(val) {
+    document.getElementById("slider-value").innerHTML = val;
+  }
+</script>
 
 	<label for="posts">Number of Posts per Week:</label>
 	<input type="number" id="posts" name="posts"><br><br>
 
 	<label for="category">Category-wise Commission:</label>
 	<select id="category" name="category">
-		<option value="0.05">Fashion</option>
-		<option value="0.08">Beauty</option>
-		<option value="0.15">Fitness</option>
-		<option value="0.2">Food</option>
+    	<option value="0.08">Beauty</option>
+		<option value="0.08">Fashion</option>
+		<option value="0.08">Home Decor</option>
+		<option value="0.02">Electronics</option>
+
+		<option value="0.03">Sports</option>
+		<option value="0.05">Health</option>
+		<option value="0.1">Food & Drinks</option>
+		<option value="0.03">Pet supplies</option>
+        
+        
 	</select><br><br>
 
 	<button type="button" onclick="calculate()">Calculate</button><br><br>
  
-	<label for="views">Views per Month:</label>
-	<input type="text" id="views" name="views" disabled><br><br>
-
-	<label for="clicks">Clicks per Month:</label>
-	<input type="text" id="clicks" name="clicks" disabled><br><br>
-
-	<label for="conversions">Conversions per Month:</label>
-	<input type="text" id="conversions" name="conversions" disabled><br><br>
+	
 
 	<label for="incentive">Incentive:</label>
 	<input type="text" id="incentive" name="incentive" disabled>
@@ -42,7 +50,7 @@
 	const maxBasketSize = 200000;
 
 	function calculate() {
-		let followers = document.getElementById("followers").value;
+		let followers = document.getElementById("range-slider").value;
 		let posts = document.getElementById("posts").value;
 		let category = document.getElementById("category").value;
 
