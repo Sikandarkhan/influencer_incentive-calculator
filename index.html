@@ -8,8 +8,8 @@
 	<form>
 		
       <label for="range-slider">Select a value:</label>
-<input type="range" id="range-slider" name="range-slider" min="0" max="100" step="1" onchange="updateValue(this.value);">
-<p>Selected value: <span id="slider-value">50</span></p>
+<input type="range" id="range-slider" name="range-slider" min="5000" max="500000" step="10000" onchange="updateValue(this.value);">
+<p>Selected value: <span id="slider-value">25000</span></p>
 
 <script>
   function updateValue(val) {
@@ -36,11 +36,19 @@
 	</select><br><br>
 
 	<button type="button" onclick="calculate()">Calculate</button><br><br>
- 
+ 	<label for="views" hidden>Views per Month:</label>
+	<input type="hidden" id="views" name="views" disabled><br><br>
+
+	<label for="clicks" hidden>Clicks per Month:</label>
+	<input type="hidden" id="clicks" name="clicks" disabled><br><br>
+
+	<label for="conversions" hidden>Conversions per Month:</label>
+	<input type="hidden" id="conversions" name="conversions" disabled><br><br>
+
+	<label for="incentive" >Incentive:</label>
+	<input type="text" id="incentive" name="incentive" disabled>
 	
 
-	<label for="incentive">Incentive:</label>
-	<input type="text" id="incentive" name="incentive" disabled>
 </form>
 
 <script>
@@ -69,3 +77,67 @@
 </script>
 </body>
 </html>
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Incentive Calculator</title>
+</head>
+<body>
+	<h1>Incentive Calculator</h1>
+	<form>
+		<label for="followers">Number of Followers:</label>
+		<input type="number" id="followers" name="followers"><br><br>
+
+	<label for="posts">Number of Posts per Week:</label>
+	<input type="number" id="posts" name="posts"><br><br>
+
+	<label for="category">Category-wise Commission:</label>
+	<select id="category" name="category">
+		<option value="0.05">Fashion</option>
+		<option value="0.08">Beauty</option>
+		<option value="0.15">Fitness</option>
+		<option value="0.2">Food</option>
+	</select><br><br>
+
+	<button type="button" onclick="calculate()">Calculate</button><br><br>
+
+	<label for="views">Views per Month:</label>
+	<input type="text" id="views" name="views" disabled><br><br>
+
+	<label for="clicks">Clicks per Month:</label>
+	<input type="text" id="clicks" name="clicks" disabled><br><br>
+
+	<label for="conversions">Conversions per Month:</label>
+	<input type="text" id="conversions" name="conversions" disabled><br><br>
+
+	<label for="incentive">Incentive:</label>
+	<input type="text" id="incentive" name="incentive" disabled>
+</form>
+
+<script>
+	const viewsPerMonth = 0.2;
+	const clicksPerMonth = 0.02;
+	const conversionRate = 0.2;
+	const maxBasketSize = 200000;
+
+	function calculate() {
+		let followers = document.getElementById("followers").value;
+		let posts = document.getElementById("posts").value;
+		let category = document.getElementById("category").value;
+
+		let views = followers * posts * 4 * viewsPerMonth;
+		document.getElementById("views").value = views;
+
+		let clicks = views * clicksPerMonth;
+		document.getElementById("clicks").value = clicks;
+
+		let conversions = clicks * conversionRate;
+		document.getElementById("conversions").value = conversions;
+
+		let incentive = conversions * category * maxBasketSize;
+		document.getElementById("incentive").value = incentive;
+	}
+</script>
+</body>
+</html> -->
